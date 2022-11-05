@@ -24,21 +24,30 @@ var game = function () {
 		});
 	}));
 	function computerTurn() {
-		let index = Math.floor((Math.random() * 9));
-		// check if the index is empty
-		if (gameBoard[index] != null|| gameBoard.includes(index)) {	
-			computerTurn();// recursively check and call the function
-		}
-		else {
-				// if the spot is free do this
-			
-				let compPlayPosition = clickElement[index];
-				compPlayPosition.id = `${turn.computer + index}`
-				gameBoard[index] = compPlayPosition.id;
-				compPlayPosition.innerText = `${turn.computer}`;
-				return index;
-		}
+		// checks if the array is not full
+		if (gameBoard.includes(undefined)) {
+			let index = Math.floor((Math.random() * 9));
+			// the array has no null element
+			if (!gameBoard.some(elem => elem === null)) {
+				// check if the index is empty
+				if (gameBoard[index] != null) {
+					computerTurn();// recursively check and call the function
+				}
+				else {
+					// if (gameBoardFull) return;
+					{
+						// if the spot is free do this
+						let compPlayPosition = clickElement[index];
+						compPlayPosition.id = `${turn.computer + index}`
+						gameBoard[index] = compPlayPosition.id;
+						compPlayPosition.innerText = `${turn.computer}`;
+						return index;
+					}
 
+				}
+			}
+		}
+		else return;
 		// end of check index is empty
 
 
@@ -48,6 +57,6 @@ var game = function () {
 	}
 	function log(result, comp) {
 		console.log(result);
-		console.log(comp);
+		console.log(comp)
 	}
 }();
