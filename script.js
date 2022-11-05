@@ -52,8 +52,17 @@ var game = function () {
 
 
 	}
-	function checker() {
+	var check = {
 
+		horizontal: function (){
+
+		},
+		vertical: function (){
+
+		},
+		diagonal: function (){
+			
+		}
 	}
 	function log(result, comp) {
 		console.log(result);
