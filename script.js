@@ -13,34 +13,38 @@ var game = function () {
 	clickElement.forEach((boxes => {
 		boxes.addEventListener('click', () => {
 			let index = Array.prototype.indexOf.call(clickElement, boxes);
-			boxes.id = `${turn.player + index}`;
-			boxes.innerText = `${turn.player}`;
-			gameBoard[index] = boxes.id;
-			let comp = computerTurn();
-			log(gameBoard, comp);
+			if (boxes.innerText == '') {
+				boxes.id = `${turn.player + index}`;
+				boxes.innerText = `${turn.player}`;
+				gameBoard[index] = boxes.id;
+				let comp = computerTurn();
+				log(gameBoard, comp);
+			}
+			else return;
 		});
 	}));
 	function computerTurn() {
 		let index = Math.floor((Math.random() * 9));
 		// check if the index is empty
-		if (gameBoard[index] ==  null || gameBoard[index] !== undefined) {
-			// if the spot is free do this
-			let compPlayPosition = clickElement[index];
-			compPlayPosition.id = `${turn.computer + index}`
-			gameBoard[index] = compPlayPosition.id;
-			compPlayPosition.innerText = `${turn.computer}`;
-			return index;
-		}
-		else{
+		if (gameBoard[index] != null|| gameBoard.includes(index)) {	
 			computerTurn();// recursively check and call the function
+		}
+		else {
+				// if the spot is free do this
+			
+				let compPlayPosition = clickElement[index];
+				compPlayPosition.id = `${turn.computer + index}`
+				gameBoard[index] = compPlayPosition.id;
+				compPlayPosition.innerText = `${turn.computer}`;
+				return index;
 		}
 
 		// end of check index is empty
 
 
 	}
-	function checker(){
-		
+	function checker() {
+
 	}
 	function log(result, comp) {
 		console.log(result);
