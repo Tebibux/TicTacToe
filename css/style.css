@@ -48,7 +48,7 @@ footer{
 	width: 915px;
 	display: grid;
 	grid-template-columns: repeat(3, 300px);
-	grid-template-rows: repeat(3, 300px);
+	grid-template-rows: 100px repeat(3, 300px);
 	gap: 5px;
 	padding-left: 0;
 }
@@ -63,4 +63,12 @@ footer{
 	/* font: initial; */
 	color: #6a7ce4de;
 	vertical-align: baseline;
+}
+button{
+	background-color: aquamarine;
+	font-size: 2rem;
+	font-weight: bold;
+}
+button:hover{
+	background-color: violet;
 }
