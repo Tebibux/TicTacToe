@@ -1,4 +1,4 @@
-var game = function () {
+(() => {
 	var turn = {
 		player: 'X',
 		computer: 'O'
@@ -12,6 +12,8 @@ var game = function () {
 	// console.log(clickElement)
 	clickElement.forEach((boxes => {
 		boxes.addEventListener('click', () => {
+			// get the positional value of the boxes(.box)
+			// which ranges within the length of clickElement
 			let index = Array.prototype.indexOf.call(clickElement, boxes);
 			if (boxes.innerText == '') {
 				boxes.id = `${turn.player + index}`;
@@ -49,23 +51,39 @@ var game = function () {
 		}
 		else return;
 		// end of check index is empty
+	};
+	// check and compare with the wining case.
+	// win case
+	var winCase = {
+		horizontal: [
+			[0, 1, 2],
+			[3, 4, 5],
+			[6, 7, 8]
+		],
+		vertical: [
+			[0, 3, 6],
+			[1, 4, 7],
+			[2, 3, 8]
+		],
+		diagonal: [
+			[0, 4, 8],
+			[2, 4, 6]
+		]
+	};
+	var check = function () {
+		let horizontal = winCase['horizontal'];
+		let vertical = winCase['vertical'];
+		let diagonal = winCase['diagonal'];
+		let boardData = {
+			horTop: {
 
-
-	}
-	var check = {
-
-		horizontal: function (){
-
-		},
-		vertical: function (){
-
-		},
-		diagonal: function (){
-			
+			}
 		}
+
 	}
 	function log(result, comp) {
 		console.log(result);
-		console.log(comp)
+		console.log(comp);
+		let diagonal = winCase['diagonal'];
 	}
-}();
+})();
